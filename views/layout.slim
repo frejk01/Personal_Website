@@ -5,9 +5,22 @@ html lang="en"
         meta name="viewport" content="width=device-width, initial-scale=1.0"/
         meta http-equiv="X-UA-Compatible" content="ie=edge"/
         title Document
-        link rel="stylesheet" href="css/style.css"/
+        link rel="stylesheet" href="css/style.css"/  
+    <style> a {text-decoration: none; color: #101010;} </style>
     body
-        div.topper 
-        div.footer 
+        div.header
+            div.gallery
+                div.links
+                div.user
+                    - if status
+                        a #{user[:userame]}
+                    - else
+                        div.login-wrapper
+                            article.login
+                                a href=('/login') login
+                            article.register
+                                a href=('/register') register
 
+ 
+        div.footer
     ==yield
