@@ -22,7 +22,10 @@ def setup()
 
     start_hash = {
         login_status: false,
-        user_hash:    nil
+        user_hash:    {
+            username: nil,
+            perm: 0
+        }
     }
     return start_hash
 end
@@ -44,5 +47,25 @@ get('/') do
     rand_num = get_file_count("./public/splash/")
     splash_dir = "splash/splash-#{rand_num}.jpg"
 
-    slim(:index, locals:{user:session[:user_hash],splash:splash_dir})
+    slim(:index, locals:{user:session[:user_hash],status:session[:login_status],splash:splash_dir})
+end
+
+get('/login') do
+end
+
+post('/login') do
+end
+
+get('/register') do
+end
+
+post('/register') do
+end
+
+get('/*') do
+    redirect('/error/404')
+end
+
+get('/error/:code') do
+    slim(:error, locals:{user:session[:user_hash],status:session[:login_status], code:params[:code]})
 end
