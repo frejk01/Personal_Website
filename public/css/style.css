@@ -17,7 +17,7 @@ body {
     grid-template-columns:100%;
     grid-template-rows: 8% 82% 10%;
     grid-template-areas:  
-    "topper"
+    "header"
     "main"
     "footer";
 
@@ -39,7 +39,7 @@ img.bg {
     width: 100%;
     height: 100%;
 }
-.footer, .topper{
+.footer, .header{
     background-color: var(--black);
 }
 
@@ -47,6 +47,6 @@ div.footer{
     grid-area: footer;
 }
 
-div.topper {
-    grid-area: topper;
+div.header {
+    grid-area: header;
 }
