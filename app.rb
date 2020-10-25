@@ -30,6 +30,13 @@ def setup()
     return start_hash
 end
 
+# Assigns values created in setup() to
+# session cookies so they can be stored
+# locally. this happens if the user is
+# neither logged in nor confirmed
+# guest. If the user has an id assigned
+# It will validate that user as logged in
+#
 before do
     if session[:login_status] == nil
         hash = setup()
@@ -42,6 +49,15 @@ before do
     end
 end
 
+# Displays the splash screen.
+# With help of get_file_count(dir) this get block
+# retrieves the randomly selected image and sends
+# it to slim(:index) in :locals as splash,
+# wich is a jpeg file directory in the form of:
+# "splash/splash-[RANDOM INT].jpg" this always works given
+# that all files in the "./public/splash" folder are
+# jpeg images.
+#
 get('/') do
 
     rand_num = get_file_count("./public/splash/")
